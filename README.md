@@ -1,8 +1,6 @@
-Here I will take you through some additional filters that you might want to add. The rest of these filters are a little bit more difficult and might involve more judgment calls. So I put them in a separate section. 
+This is a companion piece to **GBIF filtering checklist** the blog post here[](). 
 
-## Filter **automated-ids** 
-
-Some datasets use images to automatically identify 
+Here I will take you through some additional filters that you might want to add. The rest of these filters are a little bit more difficult and might involve more judgment calls. So I put them in this repository. 
 
 ## Filter **metagenomics**
 
@@ -19,6 +17,11 @@ gbif_download %>%
 filter(!basisOfRecord == "MATERIAL_SAMPLE") %>%
 filter(!publishingOrgKey == "ab733144-7043-4e88-bd4f-fca7bf858880")
 ```
+
+## Filter **automated-ids** 
+
+Some datasets use images to automatically identify 
+
 
 ## Filter not in **IUCN range**
 
