@@ -18,12 +18,13 @@ filter(!basisOfRecord == "MATERIAL_SAMPLE") %>%
 filter(!publishingOrgKey == "ab733144-7043-4e88-bd4f-fca7bf858880")
 ```
 
-## Filter **automated-ids** 
+## Automated-ids
 
-Some datasets use images to automatically identify 
+Some datasets use images to automatically identify occurrence records. Often these identifications can be very accurate. As a user, however, you might want to be aware that these datasets exists: 
 
+[Pl@ntNet automatically identified occurrences](https://www.gbif.org/dataset/14d5676a-2c54-4f94-9023-1e8dcd822aa0)
 
-## Filter not in **IUCN range**
+## Not inside IUCN range
 
 **CoordinateCleaner** also includes a function for filtering based on expert distribution polygons. 
 
@@ -62,13 +63,33 @@ It is usually good to add a buffer to the polygons, to catch any occurrences tha
 
 Also beware some IUCN polygons are **very large** and might run slow or crash your session. 
 
-## Filter **gridded datasets**
+## Gridded datasets
 
 Rasterized or gridded datasets are common on GBIF. These are datasets where location information is pinned to a low-resolution grid. 
 
-GBIF has an experimental tag for datasests which exhibit a certain about of "griddyness". You can read more [here](). To remove gridded datasets that might be above the acceptable resolution. 
+GBIF has an [experimental feature](http://api.gbif.org/v1/dataset/9070a460-0c6e-11dd-84d2-b8a03c50a862/gridded) for identifying datasests which exhibit a certain about of "griddyness". You can read more [here](https://data-blog.gbif.org/post/finding-gridded-datasets/). 
 
-Most publishers actually fill in  
+To remove gridded datasets that might be above the acceptable resolution, filter those with a minDist < 
+
+```json
+[
+  {
+    "key": 52366,
+    "totalCount": 91,
+    "minDist": 1.0,
+    "minDistCount": 86,
+    "percent": 0.9451,
+    "maxPercent": 0.9451
+  }
+]
+```
+
+
+Most publishers actually fill in one of the following columns: 
+
+
+
+So that **can also be a good way to remove gridded datasets**. 
 
 ## Filter **spatial outliers** 
 
