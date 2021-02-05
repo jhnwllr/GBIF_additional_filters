@@ -93,7 +93,7 @@ The API is experimental and might change in the future.
  * **percent** : the fraction of unique lat-lon points that have the same minDist
  * **maxPercent** : the same as percent (will probably be removed). 
 
-
+You could filter out gridded datasets by removing those with a **percent** higher than around 20% - 50% gridded. You might also want to pick a **minDist** that fits your needs.  
 Most publishers of gridded datasets actually fill in one of the following columns: 
 
 * coordinateuncertaintyinmeters
