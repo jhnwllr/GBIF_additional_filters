@@ -1,6 +1,6 @@
 This is a companion piece to **GBIF filtering checklist** the blog post here[](). 
 
-Here I will take you through some additional filters that you might want to add. The rest of these filters are a little bit more difficult and might involve more judgment calls. So I put them in this repository. 
+Here I will take you through some additional filters that you might want to add. The rest of these filters are a little bit more difficult and **might involve more judgment calls**, so I put them in this repository. 
 
 ## Filter **metagenomics**
 
@@ -67,9 +67,9 @@ Also beware some IUCN polygons are **very large** and might run slow or crash yo
 
 Rasterized or gridded datasets are common on GBIF. These are datasets where location information is pinned to a low-resolution grid. 
 
-GBIF has an [experimental feature](http://api.gbif.org/v1/dataset/9070a460-0c6e-11dd-84d2-b8a03c50a862/gridded) for identifying datasests which exhibit a certain about of "griddyness". You can read more [here](https://data-blog.gbif.org/post/finding-gridded-datasets/). 
+GBIF has an [experimental API](http://api.gbif.org/v1/dataset/9070a460-0c6e-11dd-84d2-b8a03c50a862/gridded) for identifying datasests which exhibit a certain about of "griddyness". You can read more [here](https://data-blog.gbif.org/post/finding-gridded-datasets/). 
 
-To remove gridded datasets that might be above the acceptable resolution, filter those with a minDist < 
+The api will give you responses like this:
 
 ```json
 [
@@ -84,12 +84,24 @@ To remove gridded datasets that might be above the acceptable resolution, filter
 ]
 ```
 
+The API is experimental and might change in the future. 
 
-Most publishers actually fill in one of the following columns: 
+ * **key** : id key for record
+ * **totalCount** : the count of unique lat-lon points in dataset
+ * **minDist** : the most common nearest neighbor distance in decimal degrees
+ * **minDistCount** : the number of unique lat-lon points with the same distance in decimal degrees
+ * **percent** : the fraction of unique lat-lon points that have the same minDist
+ * **maxPercent** : the same as percent (will probably be removed). 
 
 
+Most publishers of gridded datasets actually fill in one of the following columns: 
 
-So that **can also be a good way to remove gridded datasets**. 
+* coordinateuncertaintyinmeters
+* coordinateprecision
+* footprintwkt
+* locationid
+
+So filtering by these columns **can also be a good way to remove gridded datasets**. 
 
 ## Filter **spatial outliers** 
 
