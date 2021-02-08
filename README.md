@@ -2,7 +2,7 @@ This is a companion piece to **GBIF filtering checklist** the blog post here[]()
 
 Here I will take you through some additional filters that you might want to add. The rest of these filters are a little bit more difficult and **might involve more judgment calls**, so I put them in this repository. 
 
-## Filter **metagenomics**
+## metagenomics
 
 **Metagenomics** (see previous [blog post](https://data-blog.gbif.org/post/gbif-molecular-data-quality/)) is a new publishing area for GBIF. Without going into too many details, metagenomics samples the environment for DNA and then matches them against an existing reference database. Especially with non-microorganisms these matches can often be incorrect or suspicious. 
 
